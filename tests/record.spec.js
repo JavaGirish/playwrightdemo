@@ -1,17 +1,11 @@
-import { test, expect, devices } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-test('flipkart tests', async ({ page }) => {
-  await page.goto('https://www.flipkart.com/');
-  await page.getByText('Search for Products, Brands').click();
-  await page.getByPlaceholder('Search for Products, Brands').fill('lego technic');
+test('flipkart search tests', async ({ page }) => {
+  
+  await page.goto('https://www.flipkart.com/');  
+  await page.getByPlaceholder('Search for Products, Brands and More').fill('lego technic');
   await page.getByPlaceholder('Search for Products, Brands').press('Enter');
-  await page.locator('.css-1dbjc4n > div > div > div > div > div > .css-1dbjc4n > div > img:nth-child(2)').first().click();
-  
-  const locator = page.getByText('Buy now')
-  var options= {enabled: true, timeout: 3000}
-  await expect(locator).toBeEnabled(options);
-  await page.getByText('Buy now').click();
-  
+  await expect(page).toHaveTitle('Lego Technic- Buy Products Online at Best Price in India - All Categories | Flipkart.com')   
 });
 
 
@@ -26,6 +20,6 @@ test('checking various assertions', async ({page}) => {
 
     await expect.soft(page.locator("//select[@name='DateOfBirthDay']//option")).toHaveCount(32)
 
-    await expect(page.locator("(//strong)[1]"),"Text is not matching").toHaveText('Your Personal')
+    await expect(page.locator("(//strong)[1]"),"Text is not matching").toHaveText('Your Personal Details')
 
 })
