@@ -22,3 +22,12 @@ steps:
     artifact: 'playwright-report'
     publishLocation: 'pipeline'
   condition: succeededOrFailed()
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  inputs:
+    searchFolder: 'test-results'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'e2e-junit-results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    testRunTitle: 'My End-To-End Tests' 
