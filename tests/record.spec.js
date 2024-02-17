@@ -4,7 +4,7 @@ test('flipkart search tests', async ({ page }) => {
   
   await page.goto('https://www.flipkart.com/');  
   await page.getByPlaceholder('Search for Products, Brands and More').fill('lego technic');
-  await page.getByPlaceholder('Search for Products, Brands').press('Enter');
+  await page.getByPlaceholder('Search for Products, Brands and More').press('Enter');
   await expect(page).toHaveTitle('Lego Technic- Buy Products Online at Best Price in India - All Categories | Flipkart.com')   
 });
 
